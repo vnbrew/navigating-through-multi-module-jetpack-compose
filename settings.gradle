@@ -14,3 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "navigating-through-multi-module-jetpack-compose"
 include ':app'
+include ':common-module:common'
+include ':data-module:data-api', ':data-module:data-impl'
+include ':home-feature:home-api', ':home-feature:home-impl'
+include ':timetable-feature:timetable-api', ':timetable-feature:timetable-impl'
+include ':detail-feature:detail-api', ':detail-feature:detail-impl'

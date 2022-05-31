@@ -52,4 +52,14 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.activity:activity-compose:1.4.0'
+
+    implementation project(':common-module:common')
+    implementation project(':data-module:data-api')
+    implementation project(':data-module:data-impl')
+    implementation project(':home-feature:home-api')
+    implementation project(':home-feature:home-impl')
+    implementation project(':timetable-feature:timetable-api')
+    implementation project(':timetable-feature:timetable-impl')
+    implementation project(':detail-feature:detail-api')
+    implementation project(':detail-feature:detail-impl')
 }
