@@ -1,0 +1,15 @@
+[submodule "home-feature"]
+	path = home-feature
+	url = git@github.com:vnbrew/home-feature.git
+[submodule "common-module"]
+	path = common-module
+	url = git@github.com:vnbrew/common-module.git
+[submodule "data-module"]
+	path = data-module
+	url = git@github.com:vnbrew/data-module.git
+[submodule "detail-feature"]
+	path = detail-feature
+	url = git@github.com:vnbrew/detail-feature.git
+[submodule "timetable-feature"]
+	path = timetable-feature
+	url = git@github.com:vnbrew/timetable-feature.git
