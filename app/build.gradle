@@ -66,8 +66,8 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.41'
 
     implementation project(':common-module:common')
-    implementation project(':data-module:data-impl')
-    implementation project(':home-feature:home-impl')
-    implementation project(':timetable-feature:timetable-impl')
-    implementation project(':detail-feature:detail-impl')
+    implementation project(':data-module:impl')
+    implementation project(':home-feature:impl')
+    implementation project(':timetable-feature:impl')
+    implementation project(':detail-feature:impl')
 }
