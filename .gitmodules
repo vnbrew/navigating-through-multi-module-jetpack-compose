@@ -13,3 +13,6 @@
 [submodule "timetable-feature"]
 	path = timetable-feature
 	url = git@github.com:vnbrew/timetable-feature.git
+[submodule "login-feature"]
+	path = login-feature
+	url = git@github.com:vnbrew/login-feature.git

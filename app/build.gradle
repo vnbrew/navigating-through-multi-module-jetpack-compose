@@ -70,4 +70,5 @@ dependencies {
     implementation project(':home-feature:impl')
     implementation project(':timetable-feature:impl')
     implementation project(':detail-feature:impl')
+    implementation project(':login-feature:impl')
 }
