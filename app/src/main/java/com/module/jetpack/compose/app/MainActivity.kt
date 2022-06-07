@@ -7,11 +7,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.CompositionLocalProvider
 import com.module.jetpack.compose.app.di.LocalAppProvider
+import com.module.jetpack.compose.app.ui.NavigationBar
+import com.module.jetpack.compose.app.ui.StatusBar
+import com.module.jetpack.compose.app.ui.theme.AppBlack
+import com.module.jetpack.compose.app.ui.theme.ComposeArchTheme
 import com.module.jetpack.compose.common.di.LocalCommonProvider
-import com.module.jetpack.compose.common.ui.NavigationBar
-import com.module.jetpack.compose.common.ui.StatusBar
-import com.module.jetpack.compose.common.ui.theme.AppBlack
-import com.module.jetpack.compose.common.ui.theme.ComposeArchTheme
 import com.module.jetpack.compose.data.api.LocalDataProvider
 
 class MainActivity : ComponentActivity() {
