@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 
 data class TabDirections(val route: String, @DrawableRes val icon: Int, val title: String)
@@ -21,10 +22,10 @@ data class TabDirections(val route: String, @DrawableRes val icon: Int, val titl
 fun BottomNavigationBar(
     navController: NavController,
     tabs: List<TabDirections>,
-    startDestination: String
+    defaultRoute: String
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route ?: startDestination
+    val currentRoute = navBackStackEntry?.destination?.route ?: defaultRoute
     BottomNavigation {
         tabs.forEach { tab ->
             val route = tab.route
@@ -34,33 +35,24 @@ fun BottomNavigationBar(
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = true,
-                selected = currentRoute == route,
+                selected = currentRoute.startsWith(route),
                 onClick = {
-                    if (currentRoute.startsWith(route)) {
-                        navController.navigate(findTabRootRoute(route)) {
-                            popUpTo(findStartDestination(navController.graph).id)
+                    navController.navigate(route) {
+                        // Pop up to the start destination of the graph to
+                        // avoid building up a large stack of destinations
+                        // on the back stack as users select items
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
                         }
-                    } else if (route != currentRoute) {
-                        navController.navigate(route) {
-                            launchSingleTop = true
-                            restoreState = true
-                            val startDestination = findStartDestination(navController.graph)
-                            popUpTo(startDestination.id) {
-                                saveState = true
-                            }
-                        }
+                        // Avoid multiple copies of the same destination when
+                        // re-selecting the same item
+                        launchSingleTop = true
+                        // Restore state when re-selecting a previously selected item
+                        restoreState = true
                     }
+
                 }
             )
         }
     }
 }
-
-private tailrec fun findStartDestination(graph: NavDestination): NavDestination {
-    return if (graph is NavGraph) findStartDestination(graph.startDestination!!) else graph
-}
-
-private val NavGraph.startDestination: NavDestination?
-    get() = findNode(startDestinationId)
-
-private fun findTabRootRoute(tab: String) = tab
